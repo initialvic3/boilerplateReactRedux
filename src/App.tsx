@@ -1,5 +1,5 @@
 import React from "react";
-import SampleContainer from "./containers/SampleContainer";
+import SampleUserContainer from "./containers/SampleUserContainer";
 
 //Adding routing here
 
@@ -7,7 +7,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header>This is a demo app</header>
-      <SampleContainer prop1="it works!" />
+      <SampleUserContainer prop1="it works!" />
     </div>
   );
 };

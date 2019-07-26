@@ -17,6 +17,8 @@ interface UserSignupAction {
   type: typeof USER_SIGNUP;
   email: string;
   password: string;
+  firstName: string;
+  lastName: string;
 }
 
 interface UserLoginAction {
@@ -29,3 +31,9 @@ export type UserActionTypes = UserSignupAction | UserLoginAction;
 
 //INPUT TYPES
 export type LoginDetails = { email: string; password: string };
+export type SignupDetails = {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+};
