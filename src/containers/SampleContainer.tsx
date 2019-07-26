@@ -5,6 +5,9 @@ import { userLogin, userSignup } from "../redux/User/actions";
 
 export interface SampleContainerProps {
   prop1: string;
+  token: UserState["token"];
+  userSignup: typeof userSignup;
+  userLogin: typeof userLogin;
 }
 
 const SampleContainer: React.FC<SampleContainerProps> = () => {
