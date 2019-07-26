@@ -6,6 +6,7 @@ import {
 } from "amazon-cognito-identity-js";
 import poolId from "../../config/AWS_POOL_ID.json";
 //Setup your AWS pool here
+const userPool = new CognitoUserPool(poolId);
 
 type signupDetails = {
   email: string;
@@ -15,12 +16,9 @@ type signupDetails = {
 };
 
 class AuthService {
-  private userPool: CognitoUserPool;
   private user: CognitoUser | undefined;
 
-  constructor(poolId: { UserPoolId: string; ClientId: string }) {
-    this.userPool = new CognitoUserPool(poolId);
-  }
+  constructor() {}
 
   private createUserAttribute(attribute: { Name: string; Value: any }) {
     return new CognitoUserAttribute({
@@ -29,7 +27,7 @@ class AuthService {
     });
   }
 
-  signup(details: signupDetails) {
+  async signup(details: signupDetails) {
     const { email, password, firstName, lastName } = details;
     const attributes = [
       { Name: "firstName", Value: firstName },
@@ -47,7 +45,7 @@ class AuthService {
       console.log(result);
     };
 
-    this.userPool.signUp(email, password, attributes, [], callback);
+    userPool.signUp(email, password, attributes, [], callback);
   }
 }
-export default new AuthService(poolId);
+export default new AuthService();
