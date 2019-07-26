@@ -23,7 +23,7 @@ const alertClearAction = (id: string): AlertActionTypes => ({
 });
 
 //THUNK ACTIONS
-export const alertSuccess = (message: string) => (dispatch: Dispatch) => {
+export const alertSuccess = (message: string) => async (dispatch: Dispatch) => {
   const id = uuid();
   //Create the alert
   dispatch(alertSuccessAction(id, message));

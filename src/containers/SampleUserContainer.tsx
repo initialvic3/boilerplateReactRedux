@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import UserState from "../redux/User/types";
 import { userLogin, userSignup } from "../redux/User/actions";
 import { useState } from "react";
-
+import { alertSuccess } from "../redux/Alert/actions";
+import { ThunkDispatch } from "redux-thunk";
 export interface SampleUserContainerProps {
   prop1: string;
   token: UserState["token"];
@@ -11,6 +12,7 @@ export interface SampleUserContainerProps {
   password: UserState["password"];
   userSignup: typeof userSignup;
   userLogin: typeof userLogin;
+  alertSuccess: typeof alertSuccess;
 }
 
 const SampleUserContainer: React.FC<SampleUserContainerProps> = props => {
@@ -22,6 +24,14 @@ const SampleUserContainer: React.FC<SampleUserContainerProps> = props => {
   return (
     <>
       <hr />
+      <button
+        onClick={e => {
+          e.preventDefault();
+          props.alertSuccess("Does it work?");
+        }}
+      >
+        Click me{" "}
+      </button>
       <header>
         <p>Login here</p>
         <form
@@ -114,7 +124,14 @@ const mapStateToProps = (state: UserState) => {
     password: state.password,
   };
 };
-const mapDispatchToProps = { userSignup, userLogin };
+// const mapDispatchToProps = { userSignup, userLogin };
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<UserState, undefined, any>
+) => ({
+  userSignup: (signup: any) => dispatch(userSignup(signup)),
+  userLogin: (login: any) => dispatch(userLogin(login)),
+  alertSuccess: (message: string) => dispatch(alertSuccess(message)),
+});
 export default connect(
   mapStateToProps,
   mapDispatchToProps
