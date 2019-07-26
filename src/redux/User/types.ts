@@ -6,13 +6,19 @@ export default interface UserState {
     idToken: string;
   };
   email: string;
-  password: string;
+  password: string; //Dont store this later, just here for testing
+  //Handling actions
+  loading: boolean;
+  action: string;
+  error: boolean;
+  errorMessage: string;
 }
 
 //ACTIONS
 export const USER_SIGNUP = "USER_SIGNUP";
 export const USER_LOGIN = "USER_LOGIN";
 
+//Split this into Request, success, error
 interface UserSignupAction {
   type: typeof USER_SIGNUP;
   email: string;

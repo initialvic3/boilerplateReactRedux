@@ -8,6 +8,10 @@ const initialState: UserState = {
   },
   email: "",
   password: "",
+  loading: false,
+  action: "",
+  error: false,
+  errorMessage: "",
 };
 
 export default function userReducer(

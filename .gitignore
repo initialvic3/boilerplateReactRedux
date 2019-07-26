@@ -22,5 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Config model
+# Config files
 **/AWS_POOL_ID.json

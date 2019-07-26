@@ -62,6 +62,7 @@ const SampleUserContainer: React.FC<SampleUserContainerProps> = props => {
           alert(
             `Signing up with ${firstName},${lastName},${email},${password}`
           );
+          props.userSignup({ firstName, lastName, email, password });
         }}
       >
         <label>Firstname</label>
